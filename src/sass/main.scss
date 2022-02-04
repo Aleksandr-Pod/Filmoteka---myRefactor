@@ -1,0 +1,18 @@
+/*
+ * Главный файл стилей.
+ * Все паршалы подключаются сюда.
+ */
+
+@import './utils/cubic';
+@import './utils/mixins';
+@import './utils/variables';
+@import './base/common';
+@import './components/container';
+@import './components/film-card';
+@import './layout/header';
+@import './layout/hero';
+@import './layout/footer';
+@import './layout/pagination';
+@import './layout/search-modal';
+@import './layout/team-modal';
+@import './layout/spiner';

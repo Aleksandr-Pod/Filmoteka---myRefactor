@@ -1,0 +1,78 @@
+.footer {
+  font-size: 14px;
+  line-height: 1.17;
+  color: $secondary-color;
+  @media screen and (min-width: 768px) {
+    font-weight: 400;
+    font-size: 16px;
+  }
+}
+.footer-container {
+  background-color: $core-color;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 29px;
+  padding-bottom: 30px;
+
+  @media screen and (min-width: 481px) {
+    padding-top: 30px;
+    padding-bottom: 28px;
+  }
+}
+
+.footer-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.footer-top {
+  @media screen and (max-width: 425px) {
+    margin-bottom: 10px;
+  }
+}
+.footer-bottom {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.team-modal-btn {
+  padding: 0;
+  background-color: transparent;
+  border: transparent;
+  cursor: pointer;
+}
+
+.team-modal-btn__styles {
+  text-decoration: underline;
+  border-radius: 5px;
+  color: $secondary-color;
+  &:hover,
+  &:focus {
+    border-color: $accent-color;
+    text-decoration: none;
+    color: $accent-color;
+    transition: all 0.5s cubic-bezier(0.8, 0.4, 0.3, 0.9);
+    border-bottom-left-radius: 15px 255px;
+    border-bottom-right-radius: 225px 15px;
+    border-top-left-radius: 255px 15px;
+    border-top-right-radius: 15px 225px;
+    border-style: solid;
+    border-width: 2px;
+  }
+}
+
+.fa-heart {
+  color: $accent-color;
+  &:hover,
+  &:focus,
+  &:active {
+    animation: beat 0.25s infinite alternate;
+    transform-origin: center;
+  }
+}
+
+@keyframes beat {
+  to {
+    transform: scale(1.4);
+  }
+}

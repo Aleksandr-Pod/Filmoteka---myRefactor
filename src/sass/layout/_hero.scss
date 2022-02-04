@@ -1,0 +1,44 @@
+.hero {
+  flex-grow: 1;
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 60px;
+    padding-bottom: 50px;
+  }
+}
+
+.films__list {
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style: none;
+  margin-bottom: 46px;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (min-width: 768px) {
+    gap: 30px;
+
+    justify-content: unset;
+    align-items: unset;
+  }
+}
+
+.library-foto {
+  display: block;
+  background-position: top center;
+  height: 500px;
+  background-position: 50% 20px;
+  background-repeat: no-repeat;
+  background-image: url('https://raw.githubusercontent.com/NaThaleia/Film_collection/main/src/images/hero/hero-img-mob.jpg');
+  @media screen and (min-width: 768px) {
+    height: 600px;
+    background-position: 50% 50%;
+    background-image: url('https://raw.githubusercontent.com/NaThaleia/Film_collection/main/src/images/hero/hero-img.jpg');
+  }
+}
