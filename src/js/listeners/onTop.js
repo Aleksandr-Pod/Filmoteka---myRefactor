@@ -1,15 +1,11 @@
+import { modalRefs, myCard } from '../base/refs';
 import onOpenModal from './onOpenModal';
 import modal from '../templates/modal.hbs';
-import { modalRefs, myCard } from '../base/refs';
 
-export default function onHero(e) {
-  // e.preventDefault();
-
-  if (e.target.className === 'hero' || e.target.nodeName === 'UL') return; // Мимо
-  const target = e.target.closest('.filmCard');
-
+export default function onTop(e) {
+  if (e.target.className === 'invalid' || e.target.nodeName === 'UL') return; // Мимо
+  const target = e.target.closest('.top-item');
   const myCardId = target.dataset.id; // куда клик
-
   myCard.data = JSON.parse(localStorage.getItem('cards')).find(el => el.id == myCardId);
 
   /* замена жанров с чисел на буквы */
@@ -21,10 +17,9 @@ export default function onHero(e) {
     })
     .map(({ name }) => name)
     .join(', ');
-
+  
   const modalMarkup = modal(myCard.data); // создаём макет
   modalRefs.modalSearch.innerHTML = modalMarkup; // пихаем в дом
 
-  onOpenModal(myCard);
-  return;
+  onOpenModal();
 }

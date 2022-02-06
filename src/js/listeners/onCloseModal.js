@@ -1,52 +1,47 @@
-import { refs } from "../base/refs";
+import { refs, modalRefs } from '../base/refs';
 import onModalEscKeyPress from './onModalEscKeyPress';
-import onBackdropClick from "./onBackdropClick";
-import onModalWatched from "./onModalWatched";
-import onModalQueue from "./onModalQueue";
-// import CardsHero from '../templates/heroCards.hbs';
-import onQueue from "./onQueue";
-import onWatched from "./onWatched";
+import onBackdropClick from './onBackdropClick';
+import onModalWatched from './onModalWatched';
+import onModalQueue from './onModalQueue';
+import onQueue from './onQueue';
+import onWatched from './onWatched';
 
 export default function onCloseModal() {
-    console.log('Закрыть модалку');
-    const modalWatched = document.querySelector('.modal-watched');
-    const modalQueue = document.querySelector('.modal-queue');
-    const modalClose = document.querySelector('.modal-close');
+  console.log('Закрыть модалку');
+  // const modalWatched = document.querySelector('.modal-watched');
+  // const modalQueue = document.querySelector('.modal-queue');
+  // const modalClose = document.querySelector('.modal-close');
 
-    modalWatched.removeEventListener('click', onModalWatched);
-    modalQueue.removeEventListener('click', onModalQueue);
-    modalClose.removeEventListener('click', onCloseModal);
-    
-    refs.modalSearch.classList.add('is-hidden-modal-form');
-    window.removeEventListener('keydown', onModalEscKeyPress);
-    refs.modalSearch.removeEventListener('click', onBackdropClick);
-    document.body.style.overflow = ""; 
+  modalRefs.modalWatched.removeEventListener('click', onModalWatched);
+  modalRefs.modalQueue.removeEventListener('click', onModalQueue);
+  modalRefs.modalClose.removeEventListener('click', onCloseModal);
 
-    // Обновляем страничку с фильмами после их удаления
+  modalRefs.modalSearch.classList.add('is-hidden-modal-form');
+  window.removeEventListener('keydown', onModalEscKeyPress);
+  modalRefs.modalSearch.removeEventListener('click', onBackdropClick);
+  document.body.style.overflow = '';
 
-    const settingsLS = JSON.parse(localStorage.getItem('page'));
+  /* начало */
+  const PAGE_SIZE = 20;
+  let currentPage = JSON.parse(localStorage.getItem('page'));
+  let totalPage = 1;
+  let arr = [];
 
-    if (settingsLS.fetch === "Watched") {
-        // проверка - не нужно ли уменьшить page на 1
-        const x = JSON.parse(localStorage.getItem('library-watched')).length;
-        console.log("x", x);
-        if ((x % 20) === 0) {
-            settingsLS.page -= 1;
-        }
-        onWatched(null, settingsLS.page);
-        console.log("рисуем карточки снова - для Watched");
-        return;
+  if (currentPage.fetch === 'Watched') {
+    arr = JSON.parse(localStorage.getItem('library-watched'));
+    totalPage = Math.ceil(arr.length / PAGE_SIZE);
+    if (currentPage.page > totalPage) {
+      currentPage.page = totalPage;
     }
-    if (settingsLS.fetch === "Queue") {
-        // проверка - не нужно ли уменьшить page на 1
-        const x = JSON.parse(localStorage.getItem('library-queue')).length;
-        console.log("x", x);
-        if ((x % 20) === 0) {
-            settingsLS.page -= 1;
-        }
-        onQueue(null, settingsLS.page);
-        console.log("рисуем карточки снова - для Queue");
-        return;
-     }
-    return;
+    onWatched(currentPage.page, currentPage.page);
+  }
+
+  if (currentPage.fetch === 'Queue') {
+    arr = JSON.parse(localStorage.getItem('library-queue'));
+    totalPage = Math.ceil(arr.length / PAGE_SIZE);
+    if (currentPage.page > totalPage) {
+      currentPage.page = totalPage;
+    }
+    onQueue(currentPage.page, currentPage.page);
+  }
 }
