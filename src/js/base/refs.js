@@ -16,6 +16,7 @@ export const refs = {
   invalid: document.querySelector('.invalid'),
   invalidList: document.querySelector('.top-list'),
   hero: document.getElementById('filmList'),
+  empty: document.querySelector('.js-empty'),
 
   /* PAGINATION */
   pagination: document.querySelector('.pagination__container'),
@@ -29,12 +30,16 @@ export const refs = {
   nIceTeam: document.querySelector('.team-modal-btn'),
 
   /* MODAL */
-  // modalSearch: document.querySelector('.backdrop-modal-form'),
+  modalSearch: document.querySelector('.backdrop-modal-form'),
 };
+
+/* MODAL */
 export const modalRefs = {
   modalSearch: document.querySelector('.backdrop-modal-form'),
   modalWatched: {},
   modalQueue: {},
-  modalClose: {}
+  modalClose: {},
 };
-export const myCard = { data: {}};
+
+/* MODAL  */
+export const myCard = { data: {} };
