@@ -22,7 +22,7 @@ export default function onOpenModal() {
     window.addEventListener('keydown', onModalEscKeyPress);
     document.body.style.overflow = "hidden";
 
-    buttonsCheck(myCard.data.id, modalRefs.modalWatched, "library-watched","watched");
+    buttonsCheck(myCard.data.id, modalRefs.modalWatched, "library-watched", "watched");
     buttonsCheck(myCard.data.id, modalRefs.modalQueue, "library-queue", "queue");
     
     modalRefs.modalWatched.addEventListener('click', onModalBtn);
