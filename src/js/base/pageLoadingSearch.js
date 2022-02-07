@@ -4,6 +4,7 @@ import pageLoadingInvalid from './pageLoadingInvalid';
 import renderCardsHero from './renderCardsHero';
 import renderPagination from './renderPagination';
 import { spinner } from './spinner';
+import putSettings from './putSettings';
 
 /* Функция pageLoadingSearch принимает значение запроса и номер страницы, и если запрос удачный то рендерит карточки и пагинацию по запрошенному слову,
    в случае не корректного запроса рендерит ошибку */
@@ -30,12 +31,7 @@ export default function pageLoadingSearch(query, page = 1) {
     })
     .then(data => {
       renderPagination(data.total_pages, data.page);
-      const settings = {
-        page: data.page,
-        fetch: 'Search',
-        query: query,
-      };
-      localStorage.setItem('page', JSON.stringify(settings));
+      putSettings(data.page, 'Search', query);
       return data;
     })
     .catch(data => {

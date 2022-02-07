@@ -1,5 +1,4 @@
-export default function putSettings(page, fetch) {
-    const settings = {page,fetch}; // shorthand
+export default function putSettings(page, fetch, query) {
+    const settings = {page,fetch,query}; // shorthand
     localStorage.setItem('page', JSON.stringify(settings));
-    return;
 }

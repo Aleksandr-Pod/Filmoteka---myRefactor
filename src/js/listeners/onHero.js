@@ -24,5 +24,4 @@ export default function onHero(e) {
   modalRefs.modalSearch.innerHTML = modalMarkup; // пихаем в дом
 
   onOpenModal();
-  return;
 }

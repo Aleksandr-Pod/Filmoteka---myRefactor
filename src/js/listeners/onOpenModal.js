@@ -12,7 +12,6 @@ import onModalBtn from "./onModalWatched"; // можно переименова�
 export default function onOpenModal() {
     console.log('Открываем модалку');
 
-    // modalRefs.modalSearch = document.querySelector('.backdrop-modal-form');
     modalRefs.modalWatched = document.querySelector('.modal-watched');
     modalRefs.modalQueue = document.querySelector('.modal-queue');
     modalRefs.modalClose = document.querySelector('.modal-close');
@@ -28,6 +27,4 @@ export default function onOpenModal() {
     modalRefs.modalWatched.addEventListener('click', onModalBtn);
     modalRefs.modalQueue.addEventListener('click', onModalBtn);
     modalRefs.modalClose.addEventListener('click', onCloseModal);
-   
-    return;
 }
