@@ -53,7 +53,7 @@ var e,t=arguments[3];!function(t,r){"object"==typeof exports&&"object"==typeof m
 },{"./refs":"rzWj"}],"zHdB":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=r;var e=t(require("../base/theme"));function t(e){return e&&e.__esModule?e:{default:e}}function r(t){t.target.checked?localStorage.setItem("theme",JSON.stringify("dark")):localStorage.setItem("theme",JSON.stringify("light")),(0,e.default)()}
 },{"../base/theme":"uABc"}],"o8LP":[function(require,module,exports) {
-"use strict";function e(e,t){const o=JSON.parse(localStorage.getItem("library-watched"));o&&o.find(t=>t.id==e)&&(t.modalWatched.textContent="remove from watched",t.modalWatched.classList.add("selected"))}function t(e,t){const o=JSON.parse(localStorage.getItem("library-queue"));o&&o.find(t=>t.id==e)&&(t.modalQueue.textContent="remove from queue",t.modalQueue.classList.add("selected"))}Object.defineProperty(exports,"__esModule",{value:!0}),exports.watchedCheck=e,exports.queueCheck=t;
+"use strict";function e(e,t,o,s){const r=JSON.parse(localStorage.getItem(o));r&&r.find(t=>t.id==e)&&(t.textContent=`remove from ${s}`,t.classList.add("selected"))}Object.defineProperty(exports,"__esModule",{value:!0}),exports.buttonsCheck=e;
 },{}],"N111":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=o;var e=require("../base/refs"),r=t(require("./onCloseModal"));function t(e){return e&&e.__esModule?e:{default:e}}function o(e){e.currentTarget===e.target&&(console.log("Кликнули именно в бекдроп!!!!"),(0,r.default)())}
 },{"../base/refs":"rzWj","./onCloseModal":"Av4p"}],"I2DY":[function(require,module,exports) {
@@ -91,4 +91,4 @@ var e,n=arguments[3];!function(t){"object"==typeof exports&&"undefined"!=typeof 
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var e=require("./js/base/refs"),s=a(require("./js/base/eventListeners")),r=a(require("./js/base/pageLoading")),t=a(require("./js/fetch/fetchApiGenresList")),u=a(require("./js/base/theme"));function a(e){return e&&e.__esModule?e:{default:e}}function i(){(0,u.default)(),(0,t.default)(),(0,r.default)(),(0,s.default)(e.refs)}i();
 },{"./sass/main.scss":"clu1","./js/base/refs":"rzWj","./js/base/eventListeners":"LPK7","./js/base/pageLoading":"BS1Q","./js/fetch/fetchApiGenresList":"pR8r","./js/base/theme":"uABc"}]},{},["Focm"], null)
-//# sourceMappingURL=/Film_collection/src.15a34400.js.map
+//# sourceMappingURL=/Film_collection/src.3db82bc4.js.map
