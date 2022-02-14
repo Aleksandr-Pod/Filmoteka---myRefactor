@@ -1,15 +1,14 @@
-import { refs } from './refs';
+import { refs, cards } from './refs';
 import cardsHero from '../templates/heroCards.hbs';
 
 /* Функция renderCardsHero на входе принимает масси с бэкенда и череш шаблон формирует разметку блока Hero */
-export default function renderCardsHero(arr) {
+export default function renderCardsHero() {
   refs.hero.classList.remove('library-foto');
-  const arrNewYear = newYear(arr); // в исходном массиве с fetch  меняем год и передаем дальше
+  const arrNewYear = newYear(cards.arr); // в исходном массиве с fetch  меняем год и передаем дальше
   const arrNewGenres = newGenres(arrNewYear); // в исходном массиве с fetch  меняем жанр и передаем дальше
-
-  const cards = cardsHero(arrNewGenres);
-
-  refs.hero.insertAdjacentHTML('beforeend', cards);
+  const markUpCards = cardsHero(arrNewGenres); // создаём макет
+ 
+  refs.hero.insertAdjacentHTML('beforeend', markUpCards);
 }
 
 /* Функция NewYear на входе принимает массив с бэкенда, на выходе  каждоб объекте массива сокращает дату до года */
@@ -23,16 +22,14 @@ function newYear(arr) {
 
 /* Функция NewGenres на входе принимает массив с бэкенда, на выходе в каждома объекте массива изменяет жанр и округляет его */
 function newGenres(arr) {
-  const arrGenresLs = JSON.parse(localStorage.getItem('genres'));
+  // const arrGenresLs = cards.genres;
 
   const arrGenres = arr
     .map(e => {
       return {
         ...e,
         genre_ids: e.genre_ids
-          .map(x => {
-            return arrGenresLs.find(({ id }) => id === x);
-          })
+          .map(x => {return cards.genres.find(({ id }) => id === x)})
           .map(({ name }) => name),
       };
     })

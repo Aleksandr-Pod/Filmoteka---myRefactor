@@ -4,10 +4,10 @@ export default function onLibraryChangeClass(evt) {
   if (!refs.libraryBtnHeader.classList.contains('current')) {
     refs.libraryBtnHeader.classList.add('current');
     refs.homeBtnHeader.classList.remove('current');
-    console.log(`add class`);
+    console.log(`add class on Library Btn`);
     }
     
-
+// менняем фоновую картинку в хедере
   if (!refs.header.classList.contains('header_imageLibrery')) {
     refs.header.classList.add('header_imageLibrery');
     refs.header.classList.remove('header_imageHome');

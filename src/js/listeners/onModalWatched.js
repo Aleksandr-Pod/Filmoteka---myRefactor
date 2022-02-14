@@ -1,6 +1,6 @@
 import { modalRefs, myCard } from "../base/refs";
 export default function onModalBtn(evt) {
-  console.log('onModalWatched in process');
+  console.log('onModalBtn in process');
 
   let btn = "";
   let btnName = "";
@@ -31,7 +31,7 @@ export default function onModalBtn(evt) {
 function addCardToLS(lib) {
   let cards = [];
 // проверка - если фильм уже был добавлен, берём данные
-  if (JSON.parse(localStorage.getItem(lib)) !== null) {
+  if (JSON.parse(localStorage.getItem(lib))) {
     cards = JSON.parse(localStorage.getItem(lib));
   }
   cards.unshift(myCard.data); 

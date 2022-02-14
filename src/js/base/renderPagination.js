@@ -1,4 +1,4 @@
-import { refs } from './refs';
+import { refs, settings } from './refs';
 
 /* Функция renderPagination принимает два значения, общее кол-во страниц, отображает все строницы и выделяет страницу на которой находимся */
 export default function renderPagination(maxPage, currentPage) {

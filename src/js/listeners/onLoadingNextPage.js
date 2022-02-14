@@ -1,4 +1,4 @@
-import { refs } from '../base/refs';
+import { refs, settings } from '../base/refs';
 import pageLoading from '../base/pageLoading';
 import pageLoadingSearch from '../base/pageLoadingSearch';
 import onWatched from '../listeners/onWatched';
@@ -6,7 +6,7 @@ import onQueue from '../listeners/onQueue';
 
 export default function onLoadingNextPage(e) {
   let nextPage = e.target.dataset.page;
-  let currentPage = JSON.parse(localStorage.getItem('page'));
+  let currentPage = settings.page;
 
   if (!nextPage) return;
 
@@ -14,47 +14,47 @@ export default function onLoadingNextPage(e) {
 
   switch (nextPage) {
     case 'Previos':
-      nextPage = parseInt(currentPage.page) - 1;
+      nextPage = parseInt(currentPage) - 1;
       break;
 
     case 'Next':
-      nextPage = parseInt(currentPage.page) + 1;
+      nextPage = parseInt(currentPage) + 1;
       break;
 
     case 'left':
-      nextPage = parseInt(currentPage.page) - 3;
+      nextPage = parseInt(currentPage) - 3;
       break;
 
     case 'right':
-      nextPage = parseInt(currentPage.page) + 3;
+      nextPage = parseInt(currentPage) + 3;
       break;
 
     case 'left-end':
-      nextPage = parseInt(currentPage.page) - 7; // исделано по инвалидному
+      nextPage = parseInt(currentPage) - 7; // исделано по инвалидному
       break;
 
     case 'right-end':
-      nextPage = parseInt(currentPage.page) + 6; // исделано по инвалидному
+      nextPage = parseInt(currentPage) + 6; // исделано по инвалидному
       break;
 
     default:
   }
 
-  switch (currentPage.fetch) {
+  switch (settings.fetch) {
     case 'Week':
       pageLoading(parseInt(nextPage));
       break;
 
     case 'Search':
-      pageLoadingSearch(currentPage.query, parseInt(nextPage));
+      pageLoadingSearch(settings.query, parseInt(nextPage));
       break;
 
     case 'Watched':
-      onWatched(parseInt(nextPage), parseInt(nextPage));
+      onWatched(null, parseInt(nextPage));
       break;
 
     case 'Queue':
-      onQueue(parseInt(nextPage), parseInt(nextPage));
+      onQueue(null, parseInt(nextPage));
       break;
 
     default:

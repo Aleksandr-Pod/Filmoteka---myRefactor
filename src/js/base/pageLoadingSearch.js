@@ -1,10 +1,10 @@
-import { refs } from './refs';
+import { refs, cards, settings } from './refs';
 import fetchApiSearch from '../fetch/fetchApiSearch';
 import pageLoadingInvalid from './pageLoadingInvalid';
 import renderCardsHero from './renderCardsHero';
 import renderPagination from './renderPagination';
 import { spinner } from './spinner';
-import putSettings from './putSettings';
+// import putSettings from './putSettings';
 
 /* Функция pageLoadingSearch принимает значение запроса и номер страницы, и если запрос удачный то рендерит карточки и пагинацию по запрошенному слову,
    в случае не корректного запроса рендерит ошибку */
@@ -13,7 +13,7 @@ export default function pageLoadingSearch(query, page = 1) {
 
   fetchApiSearch(query, page)
     .then(data => {
-      if (!data.total_results) {
+      if (!data.total_results) { // если нет результата поиска..
         spinner('stop');
         refs.searchErrors.classList.remove('is-hidden');
         refs.pagination.classList.add('hidden');
@@ -25,13 +25,15 @@ export default function pageLoadingSearch(query, page = 1) {
         throw new Error(response.status);
       }
       spinner('stop');
-      renderCardsHero(data.results);
-      localStorage.setItem('cards', JSON.stringify(data.results));
+      cards.arr = data.results
+      renderCardsHero(cards.arr);
       return data;
     })
     .then(data => {
       renderPagination(data.total_pages, data.page);
-      putSettings(data.page, 'Search', query);
+      settings.page = data.page;
+      settings.fetch = 'Search';
+      settings.query = query;
       return data;
     })
     .catch(data => {

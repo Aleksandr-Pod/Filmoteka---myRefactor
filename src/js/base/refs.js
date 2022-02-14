@@ -43,3 +43,7 @@ export const modalRefs = {
 
 /* MODAL  */
 export const myCard = { data: {} };
+
+/* Variables */
+export const cards = { arr: [], genres: {} };
+export const settings = { page: 1, fetch: "week" };

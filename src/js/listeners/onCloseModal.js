@@ -1,4 +1,4 @@
-import { refs, modalRefs } from '../base/refs';
+import { settings, modalRefs } from '../base/refs';
 import onModalEscKeyPress from './onModalEscKeyPress';
 import onBackdropClick from './onBackdropClick';
 import onModalWatched from './onModalWatched';
@@ -23,25 +23,25 @@ export default function onCloseModal() {
 
   /* начало */
   const PAGE_SIZE = 20;
-  let currentPage = JSON.parse(localStorage.getItem('page'));
+  // let currentPage = JSON.parse(localStorage.getItem('page'));
   let totalPage = 1;
   let arr = [];
 
-  if (currentPage.fetch === 'Watched') {
+  if (settings.fetch === 'Watched') {
     arr = JSON.parse(localStorage.getItem('library-watched'));
     totalPage = Math.ceil(arr.length / PAGE_SIZE);
-    if (currentPage.page > totalPage) {
-      currentPage.page = totalPage;
+    if (settings.page > totalPage) {
+      settings.page = totalPage;
     }
-    onWatched(currentPage.page, currentPage.page);
+    onWatched(null, settings.page);
   }
 
-  if (currentPage.fetch === 'Queue') {
+  if (settings.fetch === 'Queue') {
     arr = JSON.parse(localStorage.getItem('library-queue'));
     totalPage = Math.ceil(arr.length / PAGE_SIZE);
-    if (currentPage.page > totalPage) {
-      currentPage.page = totalPage;
+    if (settings.page > totalPage) {
+      settings.page = totalPage;
     }
-    onQueue(currentPage.page, currentPage.page);
+    onQueue(null, settings.page);
   }
 }

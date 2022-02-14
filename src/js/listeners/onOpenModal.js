@@ -1,4 +1,4 @@
-import { refs, myCard, modalRefs} from "../base/refs";
+import { myCard, modalRefs} from "../base/refs";
 import { buttonsCheck } from "../modal/buttonsCheck";
 
 import onModalEscKeyPress from './onModalEscKeyPress';
